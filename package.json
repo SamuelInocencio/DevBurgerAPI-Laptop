@@ -1,9 +1,9 @@
 {
   "name": "devburger-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,10 @@
   "description": "",
   "dependencies": {
     "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "nodemon": "^3.1.10",
+    "sucrase": "^3.35.0"
   }
 }
