@@ -15,4 +15,4 @@ class App {
   }
 }
 
-export default new App().appsssb;
+export default new App().app;
