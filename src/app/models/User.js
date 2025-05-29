@@ -16,11 +16,16 @@ class User extends Model {
       },
     );
     this.addHook('beforeSave', async (user) => {
+      const saltRounds = 10;
       if (user.password) {
-        user.password_hash = await bcrypt.hash(user.password, 8);
+        user.password_hash = await bcrypt.hash(user.password, saltRounds);
       }
     });
     return this;
+  }
+
+  async checkPassword(password) {
+    return bcrypt.compare(password, this.password_hash);
   }
 }
 
