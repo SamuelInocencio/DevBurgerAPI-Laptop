@@ -49,10 +49,8 @@ class ProductController {
       // ],
     });
 
-    console.log({ userId: request.userId });
-
     return response.json(products);
-  }
+  }
 }
 
 export default new ProductController();
