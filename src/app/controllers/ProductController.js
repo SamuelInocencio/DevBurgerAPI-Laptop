@@ -1,7 +1,6 @@
 import * as Yup from 'yup';
 
 import Product from '../models/Product';
-// import User from '../models/User';
 
 class ProductController {
   async store(request, response) {
@@ -9,7 +8,6 @@ class ProductController {
       name: Yup.string().required(),
       price: Yup.number().required(),
       category: Yup.string().required(),
-      offer: Yup.boolean(),
     });
 
     try {
@@ -17,12 +15,6 @@ class ProductController {
     } catch (err) {
       return response.status(400).json({ error: err.errors });
     }
-
-    // const { admin: isAdmin } = await User.findByPk(request.userId);
-
-    // if (!isAdmin) {
-    //   return response.status(401).json();
-    // }
 
     const { filename: path } = request.file;
     const { name, price, category, offer } = request.body;
@@ -32,22 +24,13 @@ class ProductController {
       price,
       category,
       path,
-      // offer,
     });
 
     return response.status(201).json(product);
   }
 
   async index(request, response) {
-    const products = await Product.findAll({
-      // include: [
-      //   {
-      //     model: Category,
-      //     as: 'category',
-      //     attributes: ['id', 'name'],
-      //   },
-      // ],
-    });
+    const products = await Product.findAll({});
 
     return response.json(products);
   }
